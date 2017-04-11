@@ -1,29 +1,44 @@
-import nltk
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import re
 import os
-from nltk.tokenize import sent_tokenize, word_tokenize
+os.system("pip install --upgrade textblob")
+import textblob
 from textblob import TextBlob
 from os.path import dirname
-from adapt.intent import IntentBuilder
+os.system("python -m textblob.download_corpora")
 
 
-text = raw_input("please enter your question here: ")
-text = text.lower()
-sent_list = text.split(' ')
-thisType = ""
-types = ("what", "who", "when", "why", "how")
+def infoExtract():
+	text = ""
+	while(len(text) == 0):
+		text = raw_input("enter 'stop' to stop the program. please enter your question here: ")
 
-if(len(sent_list) != 0 and sent_list[0] in types):
-    thisType = sent_list[0]
-else:
-    for word in sent_list:
-        if(word in types):
-            thisType = word
-tb = TextBlob(text)
-keyword = tb.noun_phrases
+	text = text.lower()
+	tb = TextBlob(text)
+	if(text == "stop"):
+		return "stop"
+	sent_list = text.split(' ')
+	thisType = ""
+	types = ("what", "who", "when", "why", "how", "where")
 
-output = []
-output.append(thisType)
-output.append(" ".join(keyword))
+	if(len(sent_list) != 0 and sent_list[0] in types):
+	    thisType = sent_list[0]
+	else:
+	    for word in sent_list:
+	        if(word in types):
+	            thisType = word
+	keyword = tb.tags
+	result = ""
+	for tuples in keyword:
 
-print(output)
+		if(tuples[1] in ["NN", "NNP", "NNS", "NNPS", "JJ"]):
+
+			result += "".join(tuples[0])+" "
+
+	output = []
+	output.append(thisType)
+	output.append(result)
+
+	print("Question Type: " + output[0] + "KeyInfo: ß" + output[1])
+	return output
