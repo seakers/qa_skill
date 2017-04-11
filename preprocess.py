@@ -5,14 +5,19 @@ import os
 os.system("pip install --upgrade textblob")
 import textblob
 from textblob import TextBlob
-from os.path import dirname
 os.system("python -m textblob.download_corpora")
+from sys import version_info
+
 
 
 def infoExtract():
+	py3 = version_info[0] > 2 #creates boolean value for test that Python major version > 2
 	text = ""
 	while(len(text) == 0):
-		text = raw_input("enter 'stop' to stop the program. please enter your question here: ")
+		if py3:
+			text = input("enter 'stop' to stop the program. please enter your question here: ")
+		else:
+			text = raw_input("enter 'stop' to stop the program. please enter your question here: ")
 
 	text = text.lower()
 	tb = TextBlob(text)
@@ -40,5 +45,5 @@ def infoExtract():
 	output.append(thisType)
 	output.append(result)
 
-	print("Question Type: " + output[0] + "KeyInfo: ß" + output[1])
+	print("Question Type: " + output[0] + " KeyInfo: " + output[1])
 	return output
