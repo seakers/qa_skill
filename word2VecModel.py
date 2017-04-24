@@ -35,38 +35,46 @@ def question_classify(method = "pretrained"):
 
 	#category: dictionary w/ key = category name, value = words in the category
 	category = {}
-	category["location"] = []
-	category["University"] = []
+	dir = os.getcwd()+"/data"
+	for root, dirs, filenames in os.walk(dir):
+		for f in filenames:
+			with open(dir + "/" + f) as fcontent:
+				category[f] = []
+				#content = list of example questions
+				content = fcontent.readlines()
+				for i in xrange(0,len(content)):
+					content[i] = content[i].rstrip()
+					j=0
+					while j <len(content[i]):
+						if(not content[i][j].isalpha() and content[i][j] != " "):
+							content[i] = content[i][0:j] + content[i][j+1:len(content)]
+						else:
+							j += 1
+				category[f] = content
 
-	category["location"].append("Seattle")
-	category["location"].append("San Franscisco")
-	category["location"].append("New York")
-
-	category["University"].append("Cornell")
-	category["University"].append("Harvard")
-	category["University"].append("Yale")
-	category["University"].append("MIT")
-	category["University"].append("Berkeley")
 
 	def word_cluster_value(wordList, category, method = "pretrained"):
-
 		similarities = []
-		maxSim = -sys.maxint
+		maxSim = - sys.maxint
 		output = ""
-		wordList = wordList[1].split()
-		for word in wordList:
-			for types in category:
-				for element in category[types]:
-					if(element == types):
-						print(types)
-						return types
-					try:
-						similarities.append(model.similarity(word, element))
-					except KeyError:
-						pass
+		sentence = wordList[2].split()
+		for types in category:
+			for part in category[types]:
+				for word in sentence:
+					tampPart = part.split()
+					for element in tampPart:
+						#print(word + " " + element)
+				#if(element == types):
+				#	print(types)
+				#	return types
+						try:
+							similarities.append(model.similarity(word, element))
+						except KeyError:
+							pass
 				if(len(similarities) == 0):
 					continue
 				normalized_sim = sum(similarities)/len(similarities)
+
 				similarities = []
 				if(normalized_sim > maxSim):
 					output = types
@@ -80,14 +88,15 @@ def question_classify(method = "pretrained"):
 	wordList = ""
 	while(wordList != "stop"):
 		wordList = infoExtract()
-		if(len(wordList) == 0 or wordList[1] == 0):
+		if(len(wordList) == 0 or wordList[1] == 0 or wordList[2] == 0):
 			print("oops! empty! please try again")
 			continue
 		word_cluster_value(wordList, category)
 
 
-model = model_pretrained()
+
 #model1 = model_train(min_count = minimum_count, size = size_, window = window_)
+model = model_pretrained()
 question_classify()
 
 

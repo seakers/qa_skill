@@ -1,0 +1,23 @@
+Which missions do we currently use to measure aerosols?
+Which instruments do we currently use to measure soil moisture at the surface?
+Which missions can measure albedo and reflectance?
+Which instruments can measure ocean salinity between 1980 and 2000?
+When was mission Jason-3 launched?
+When was instrument MODIS launched?
+Which instruments does Sentinel-1 have?
+Which instruments does GISAT have?
+Which atmospheric chemistry instruments are currently in orbit?
+Which atmospheric lidars are currently in orbit?
+Which cloud and precipitation radars are currently in orbit?
+Which data collection instruments are currently in orbit?
+What is the geometry of VIIRS?
+What is the status of ACRIM II?
+What is the agency of Pamela?
+What is the resolution of PRISM?
+What is the swath of RO?
+What is the accuracy of ROSA?
+How is the data access of SAGE I?
+Which is the data format of SCAT?
+Which is the instrument with the highest spatial resolution currently in orbit?
+Can a ocean colour instrument measure snow albedo?
+What are the spectral bands of MODIS?

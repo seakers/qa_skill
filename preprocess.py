@@ -44,6 +44,6 @@ def infoExtract():
 	output = []
 	output.append(thisType)
 	output.append(result)
-
+	output.append(text)
 	print("Question Type: " + output[0] + " KeyInfo: " + output[1])
 	return output

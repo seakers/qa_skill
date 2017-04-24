@@ -1,0 +1,23 @@
+Why is this feature a good feature?
+Why is this feature not a good feature?
+Can you suggest a good feature that describes the target region well?
+What feature covers the selected region well?
+What is the feature that is unique to the solutions in the target region?
+What is a good feature describing this target region?
+What are the recurring patterns in the target region?
+What are the features that are shared by the target designs?
+Which feature covers all the solutions in the target region?
+Which feature can be found in all of the designs in the target region?
+What are the instruments whose peak powers are within the range 300W-500W?
+Which of the designs have instrument A assigned to orbit 1000?
+Which of the designs use 7 instruments in total?
+Highlight designs that assign instrument A in orbit 3000
+Highlight designs that use all 5 orbits
+Highlight designs that does not use instrument C
+What are the designs that use total 10 instruments
+What are the designs that assigns 3 instruments in orbit 1000?
+What is the best designs found so far?
+What are the driving features?
+What are the patterns that are found in the selected region?
+What are the recurring patterns within the low-cost region?
+What are the patterns that are found in the high science benefit region?
